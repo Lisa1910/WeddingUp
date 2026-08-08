@@ -4,29 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Виктория & Даниил — 02.10.2026</title>
-    <!-- Подключаем изысканные свадебные шрифты: Cormorant Garamond и каллиграфический ручной Monsieur La Doulaise -->
+    <!-- Высокая каллиграфия и тончайшие начертания -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --bg-lux-ultra: #120103;  /* Тёмное благородное вино */
-            --bg-maroon-deep: #1f0307; /* Роскошный бархатный бордовый */
-            --cream-silk: #fbf9f4;     /* Молочно-шёлковый светлый */
-            --text-gold-fade: #c5a880; /* Приглушённое винтажное золото */
-            --text-dark: #2a221d;      /* Мягкий графит для чтения */
+            --lux-burgundy: #170104; /* Ультра-тёмный, бархатный бордо */
+            --lux-wine: #2d040a;     /* Глубокий винный для плашек */
+            --lux-cream: #fbf9f3;    /* Благородный шёлк бумаги */
+            --lux-gold: #c5a880;     /* Тонкое винтажное золото */
+            --text-dark: #1c1613;    /* Графит для хрупкого текста */
             --text-light: #ffffff;
-            --shadow-premium: 0 35px 80px rgba(0, 0, 0, 0.85); /* Глубокая тень для ПК */
+            --shadow-pc: 0 40px 90px rgba(0, 0, 0, 0.9);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Плавное появление элементов при загрузке */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Имитация текстуры холста/бумаги через встроенный SVG-шум */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         body {
-            background-color: #080001;
+            background-color: #050001;
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
             display: flex;
@@ -34,99 +39,146 @@
             align-items: center;
             min-height: 100vh;
             padding: 40px 0;
+            overflow-x: hidden;
         }
 
-        /* Премиальный телефонный каркас с глубокими тенями на ПК */
+        /* Мобильный подиум с глубокой тенью для ПК */
         .phone-container {
             width: 100%;
             max-width: 420px;
-            background-color: var(--cream-silk);
-            box-shadow: var(--shadow-premium);
+            background-color: var(--lux-cream);
+            box-shadow: var(--shadow-pc);
             display: flex;
             flex-direction: column;
-            border-radius: 8px;
+            position: relative;
             overflow: hidden;
+        }
+
+        /* Плавные анимации появления при прокрутке */
+        .animate-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: luxReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes luxReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section { padding: 75px 0; text-align: center; position: relative; }
+
+        /* Тончайший акварельный шрифт "Апрель" */
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            font-size: 0.8rem;
+            line-height: 2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0 40px;
+            color: var(--text-dark);
+        }
+
+        /* Скрипт-шрифт имитирующий Ministry Script и Caravan поверх фото */
+        .overlay-caravan {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 5.5rem;
+            color: var(--lux-gold);
+            line-height: 0.5;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            left: 0;
+            z-index: 10;
+            pointer-events: none;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Изысканная плашка без скруглений с острыми вырезами */
+        .sharp-plate {
+            background-color: var(--lux-wine);
+            color: var(--text-light);
+            margin: 30px 20px;
+            padding: 50px 25px;
+            clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+            border: 1px solid rgba(195, 168, 128, 0.25);
             position: relative;
         }
 
-        section { 
-            padding: 65px 0; 
-            text-align: center; 
+        /* Контейнер журнального фото */
+        .photo-frame-lux {
+            width: 100%;
+            height: 520px;
             position: relative;
-            animation: fadeInUp 1.2s ease forwards;
+            overflow: hidden;
+        }
+        .photo-frame-lux img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) brightness(0.95); }
+        /* Сложный готический арочный свод для картинок и блоков */
+        .gothic-arch {
+            clip-path: polygon(50% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%);
+            border: 1px solid rgba(195, 168, 128, 0.3);
         }
 
-        /* Журнальные заголовки */
-        h1, h2, h3 {
+        /* Тонкие винтажные разделители с ромбом по центру */
+        .lux-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            width: 140px;
+        }
+        .lux-divider::before, .lux-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--lux-gold), transparent);
+        }
+        .lux-divider-rhomb {
+            width: 6px;
+            height: 6px;
+            background-color: var(--lux-gold);
+            transform: rotate(45deg);
+            margin: 0 10px;
+        }
+
+        /* Календарная сетка в стиле высокой классики */
+        .cal-premium {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 14px;
+            max-width: 300px;
+            margin: 40px auto 0;
+        }
+        .cal-premium span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 1rem;
         }
-
-        p { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem; 
-            font-weight: 400; 
-            line-height: 1.6; 
-            padding: 0 35px;
-        }
-
-        /* Каллиграфические росчерки из примеров */
-        .calligraphy {
-            font-family: 'Monsieur La Doulaise', cursive;
-            font-size: 3.8rem;
-            color: var(--text-gold-fade);
-            line-height: 0.8;
-            margin-bottom: 10px;
-        }
-
-        /* Картинки "в край" плашек без рамок по бокам */
-        .img-full-width {
-            width: 100%;
-            height: 480px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        .img-full-width img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Вводная секция */
-        .section-intro { background-color: var(--cream-silk); padding-top: 80px; }
-        .intro-wedding { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; color: #8d8175; margin-bottom: 5px; }
-        .intro-day { font-size: 2.8rem; font-style: italic; color: var(--bg-lux-ultra); font-family: 'Cormorant Garamond', serif; margin-bottom: 25px; }
-        .names-luxury { font-size: 3rem; font-weight: 400; color: var(--bg-lux-ultra); margin: 25px 0; letter-spacing: 1px; }
-
-        /* Календарь */
-        .section-date { background-color: var(--bg-lux-ultra); color: var(--text-light); padding: 70px 30px; }
-        .section-date h2 { font-size: 2.8rem; font-style: italic; color: var(--text-gold-fade); margin-top: 10px; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; max-width: 290px; margin: 35px auto 0; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
-        .calendar-grid span { display: flex; justify-content: center; align-items: center; height: 32px; font-weight: 200; }
-        .day-header { color: rgba(255,255,255,0.3); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        .wedding-day { background-color: var(--cream-silk); color: var(--bg-lux-ultra); font-weight: 500; border-radius: 50%; width: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.4); }
-
-        /* Динамический глянец на кнопке карты */
-        .btn-luxury-map { 
-            display: inline-block; 
-            background-color: var(--cream-silk); 
-            color: var(--bg-lux-ultra); 
-            text-decoration: none; 
-            padding: 16px 40px; 
-            font-size: 0.8rem; 
+        .cal-premium .cal-header {
             font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-weight: 400; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            border-radius: 2px;
-            margin-top: 30px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            font-weight: 100;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
         }
-        .btn-luxury-map:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
-
-        @media (max-width: 450px) {
-            body { padding: 0; background-color: var(--cream-silk); }
-            .phone-container { max-width: 100%; box-shadow: none; border-radius: 0; }
+        .cal-premium .active-day {
+            position: relative;
+            color: var(--lux-dark);
+            font-weight: 400;
+        }
+        .cal-premium .active-day::before {
+            content: "";
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background-color: var(--lux-cream);
+            border: 1px solid var(--lux-gold);
+            border-radius: 50%;
+            z-index: -1;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -134,109 +186,178 @@
 
     <div class="phone-container">
 
-        <!-- Секция 1: Обложка -->
-        <section class="section-intro">
-            <div class="intro-wedding">Приглашение на свадьбу</div>
-            <div class="intro-day">Save the Date</div>
-            <div class="img-full-width"><img src="main.png" alt="Виктория и Даниил"></div>
-            <div class="names-luxury">Виктория & Даниил</div>
-            <div style="width: 40px; height: 1px; background: var(--text-gold-fade); margin: 25px auto;"></div>
-            <p style="font-style: italic; color: #554d45;">«Любовь — это выбор, который мы делаем каждый день. И в этот особенный вечер мы скажем «да» друг другу перед теми, кто дорог нам больше всего».</p>
+        <!-- СЕКЦИЯ 1: Обложка Торжества -->
+        <section class="section-intro animate-fade">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: #7a7065; margin-bottom: 10px;">The Invitation</div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 2.5rem; font-style: italic; color: var(--lux-burgundy); letter-spacing: 2px;">Save the Date</div>
+            
+            <div class="lux-divider">
+                <div class="lux-divider-rhomb"></div>
+            </div>
+
+            <!-- Фотография в край с глубоким каллиграфическим наложением -->
+            <div class="photo-frame-lux" style="margin-top: 40px;">
+                <div class="overlay-caravan" style="top: 40%;">Victoria</div>
+                <img src="main.png" alt="Виктория и Даниил">
+            </div>
+
+            <div class="photo-frame-lux" style="height: 180px; background-color: var(--lux-cream); display: flex; align-items: center; justify-content: center; margin: 0;">
+                <div class="overlay-caravan" style="position: relative; font-size: 4rem; color: var(--lux-burgundy); margin: 20px 0;">&</div>
+            </div>
+
+            <div class="photo-frame-lux" style="height: 380px; margin-bottom: 40px;">
+                <div class="overlay-caravan" style="top: 15%;">Daniil</div>
+                <img src="ring.png" alt="Союз сердец">
+            </div>
+
+            <p style="margin-top: 30px; padding: 0 45px;">Любовь — это выбор, который мы делаем каждый день. И в этот особенный вечер мы скажем «да» друг другу перед теми, кто дорог нам больше всего.</p>
         </section>
 
-        <!-- Секция 2: Календарь -->
-        <section class="section-date">
-            <div class="calligraphy">Love story</div>
-            <p style="opacity: 0.8; font-style: italic; padding: 0 40px;">Два сердца. Один день. С любовью приглашаем вас разделить этот миг вместе с нами.</p>
-            <h2>Октябрь 2026</h2>
-            <div class="calendar-grid">
-                <span class="day-header">Пн</span><span class="day-header">Вт</span><span class="day-header">Ср</span><span class="day-header">Чт</span><span class="day-header">Пт</span><span class="day-header">Сб</span><span class="day-header">Вс</span>
-                <span></span><span></span><span></span><span>1</span><span class="wedding-day"><span>2</span></span><span>3</span><span>4</span>
+        <!-- СЕКЦИЯ 2: Сакральный Календарь -->
+        <section class="sharp-plate animate-fade">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; color: var(--lux-gold); font-weight: 300;">Октябрь 2026</div>
+            <div class="lux-divider">
+                <div class="lux-divider-rhomb" style="background-color: var(--lux-gold);"></div>
+            </div>
+            
+            <p style="color: rgba(255,255,255,0.7); padding: 0 20px; font-size: 0.75rem;">Два сердца встанут на один изящный путь. С любовью приглашаем вас стать свидетелями этого мгновения.</p>
+
+            <div class="cal-premium">
+                <span class="cal-header">Пн</span><span class="cal-header">Вт</span><span class="cal-header">Ср</span><span class="cal-header">Чт</span><span class="cal-header">Пт</span><span class="cal-header">Сб</span><span class="cal-header">Вс</span>
+                <span></span><span></span><span></span><span>1</span><span class="active-day">2</span><span>3</span><span>4</span>
                 <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
                 <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
                 <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
                 <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
             </div>
         </section>
+        <!-- СЕКЦИЯ 3: Хронология Дня (Тайминг) -->
+        <section class="animate-fade" style="background-color: var(--lux-cream); padding-top: 60px;">
+            <div style="font-family: 'Pinyon Script', cursive; font-size: 4.5rem; color: var(--lux-burgundy); line-height: 0.6;">Timing</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: #8a7f72; margin-top: 15px; margin-bottom: 50px;">Порядок торжественных мгновений</div>
 
-        <!-- Секция 3: Роскошная интерьерная перебивка (вместо кольца) -->
-        <div class="img-full-width" style="height: 400px; margin: 0;"><img src="ring.png" alt="Детали"></div>
-        <!-- Секция 4: Тайминг -->
-        <section style="background-color: var(--cream-silk); padding-bottom: 40px;">
-            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">Timing</div>
-            <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #8d8175; margin-bottom: 45px; font-family: 'Montserrat', sans-serif;">Программа торжества</h2>
-            
-            <div style="display: flex; flex-direction: column; gap: 35px; max-width: 300px; margin: 0 auto; text-align: center;">
-                <div style="border-bottom: 1px solid rgba(61, 8, 17, 0.06); padding-bottom: 20px;">
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--bg-lux-ultra); font-weight: 300; font-style: italic; line-height: 1;">17:00</div>
-                    <div style="font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-dark); margin-top: 5px; letter-spacing: 0.5px;">Сбор самых близких гостей</div>
+            <div style="display: flex; flex-direction: column; gap: 40px; max-width: 290px; margin: 0 auto; text-align: center; position: relative;">
+                
+                <!-- Точка 1 -->
+                <div style="position: relative; padding-bottom: 10px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; font-style: italic; color: var(--lux-burgundy); line-height: 1; letter-spacing: 1px;">17:00</div>
+                    <div style="width: 25px; height: 1px; background: var(--lux-gold); margin: 12px auto;"></div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dark);">Сбор самых близких гостей</div>
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: #7a7065; margin-top: 5px;">Приветственные напитки, объятия и атмосфера ожидания</div>
                 </div>
-                <div style="padding-bottom: 10px;">
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--bg-lux-ultra); font-weight: 300; font-style: italic; line-height: 1;">17:30</div>
-                    <div style="font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-dark); margin-top: 5px; letter-spacing: 0.5px;">Начало закрытого мероприятия</div>
+
+                <!-- Декоративный ромбик между пунктами -->
+                <div style="width: 4px; height: 4px; background: var(--lux-gold); transform: rotate(45deg); margin: 5px auto;"></div>
+
+                <!-- Точка 2 -->
+                <div style="position: relative; padding-bottom: 10px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; font-style: italic; color: var(--lux-burgundy); line-height: 1; letter-spacing: 1px;">17:30</div>
+                    <div style="width: 25px; height: 1px; background: var(--lux-gold); margin: 12px auto;"></div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dark);">Начало закрытого мероприятия</div>
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: #7a7065; margin-top: 5px;">Торжественное начало нашего семейного праздника</div>
                 </div>
             </div>
         </section>
 
-        <!-- Секция 5: Фото домика (в край) -->
-        <div class="img-full-width" style="margin: 0;"><img src="house.png" alt="Mono Premium Homes"></div>
-
-        <!-- Секция 6: Локация -->
-        <section style="background-color: var(--bg-maroon-deep); color: var(--text-light); padding: 75px 30px;">
-            <div class="calligraphy" style="font-size: 3.5rem;">Location</div>
-            <h3 style="font-size: 1.8rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-gold-fade);">Mono Premium Homes</h3>
-            <p style="font-size: 1.1rem; opacity: 0.8; font-style: italic; margin-bottom: 35px; padding: 0;">Дивногорский округ, посёлок Усть-Мана</p>
-            <a href="https://yandex.ru" target="_blank" class="btn-luxury-map">Открыть карту</a>
+        <!-- Арочный готический срез для лесной локации -->
+        <section style="background-color: var(--lux-cream); padding: 20px 20px 0 20px;">
+            <div class="photo-frame-lux gothic-arch" style="height: 360px;">
+                <img src="house.png" alt="Mono Premium Homes Equilibrium">
+            </div>
+        </section>
+        <!-- СЕКЦИЯ 4: Локация (Премиальная темная плашка) -->
+        <section class="sharp-plate animate-fade" style="margin-top: 0; background-color: var(--lux-burgundy);">
+            <div style="font-family: 'Pinyon Script', cursive; font-size: 5rem; color: var(--lux-gold); line-height: 0.5;">Location</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 20px; margin-bottom: 40px;">Место проведения вечера</div>
+            
+            <h3 style="font-size: 2rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; color: var(--text-light); margin-bottom: 10px;">Mono Premium Homes</h3>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--lux-gold); margin-bottom: 35px;">Дивногорский округ, посёлок Усть-Мана</div>
+            
+            <!-- Прямая кутюрная ссылка на 2ГИС с точными координатами -->
+            <a href="https://2gis.ru" target="_blank" style="display: inline-block; background: transparent; color: var(--lux-gold); border: 1px solid var(--lux-gold); text-decoration: none; padding: 16px 45px; font-size: 0.75rem; font-family: 'Montserrat', sans-serif; font-weight: 200; text-transform: uppercase; letter-spacing: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); transition: all 0.4s ease;">
+                Открыть в 2ГИС
+            </a>
         </section>
 
-        <!-- Секция 7: Фото спа/чан (в край) -->
-        <div class="img-full-width" style="margin: 0;"><img src="spa.png" alt="Атмосфера лесного лофта"></div>
-
-        <!-- Секция 8: Дресс-код (Очищенный и изящный) -->
-        <section style="background-color: var(--cream-silk); padding: 70px 40px;">
-            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">Dress-code</div>
-            <div style="border-top: 1px solid rgba(197, 168, 128, 0.3); border-bottom: 1px solid rgba(197, 168, 128, 0.3); padding: 35px 10px; margin-top: 15px;">
-                <p style="color: var(--text-dark); font-style: italic; font-size: 1.3rem; line-height: 1.7; padding: 0;">«Для нас очень важен ваш комфорт. Мы будем искренне признательны, если вы поддержите лёгкую и непринужденную атмосферу нашего праздника, выбрав наряд в изысканном стиле <strong style="font-weight: 500; color: var(--bg-lux-ultra);">Smart Casual</strong>».</p>
+        <!-- Арочный готический срез для атмосферного чана -->
+        <section style="background-color: var(--lux-cream); padding: 0 20px 20px 20px;">
+            <div class="photo-frame-lux gothic-arch" style="height: 360px; transform: scaleY(-1);">
+                <img src="spa.png" alt="Лесная купель" style="transform: scaleY(-1);">
             </div>
         </section>
 
-        <!-- Секция 9: Пожелания (Алкоголь) -->
-        <section style="background-color: var(--bg-lux-ultra); color: var(--text-light); padding: 75px 40px;">
-            <h2 style="font-size: 2.2rem; color: var(--text-gold-fade); font-style: italic; margin-bottom: 25px;">Детали вечера</h2>
-            <p style="opacity: 0.85; font-size: 1.2rem; font-style: italic; line-height: 1.7; padding: 0;">Мы с большим трепетом составляем основное меню праздничного стола. Формат нашего лесного праздника абсолютно свободный — вы можете смело привозить с собой любые любимые алкогольные напитки, которые предпочтете пить в этот вечер.</p>
+        <!-- СЕКЦИЯ 5: Дресс-код -->
+        <section class="animate-fade" style="background-color: var(--lux-cream); padding-bottom: 60px;">
+            <div style="font-family: 'Pinyon Script', cursive; font-size: 5rem; color: var(--lux-burgundy); line-height: 0.6;">Dress-code</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: #8a7f72; margin-top: 15px; margin-bottom: 45px;">Эстетика вашего образа</div>
+
+            <div style="margin: 0 30px; border: 1px solid rgba(197, 168, 128, 0.4); padding: 45px 20px; position: relative;">
+                <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--lux-cream); padding: 0 15px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(197, 168, 128)" stroke-width="1"><path d="M12 2L2 12h20L12 2zM12 22l10-10H2l10 10z"/></svg>
+                </div>
+
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--lux-burgundy); margin-bottom: 15px; font-weight: 300;">Smart Casual</div>
+                <p style="padding: 0 10px; font-size: 0.85rem; color: var(--text-dark); line-height: 2;">Для нас бесконечно важен ваш личный комфорт. Мы будем искренне признательны, если вы разделите гармонию этого вечера, выбрав элегантный, свободный и непринужденный наряд в рамках заявленной концепции.</p>
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: #8a7f72; margin-top: 20px; font-weight: 300; letter-spacing: 1px;">Спокойные оттенки благородной осени</div>
+
+                <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); background: var(--lux-cream); padding: 0 15px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(197, 168, 128)" stroke-width="1"><path d="M12 2L2 12h20L12 2zM12 22l10-10H2l10 10z"/></svg>
+                </div>
+            </div>
+        </section>
+        <!-- СЕКЦИЯ 6: Пожелания (Свободный формат вечера) -->
+        <section class="sharp-plate animate-fade" style="background-color: var(--lux-burgundy); margin-bottom: 0;">
+            <div style="font-family: 'Pinyon Script', cursive; font-size: 5rem; color: var(--lux-gold); line-height: 0.5;">Details</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 20px; margin-bottom: 45px;">Важные детали вечера</div>
+
+            <div style="margin: 0 auto 30px; width: 30px; height: 30px; border: 1px solid var(--lux-gold); transform: rotate(45deg); display: flex; align-items: center; justify-content: center;">
+                <div style="width: 6px; height: 6px; background: var(--lux-gold); border-radius: 50%;"></div>
+            </div>
+
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; line-height: 2.2; text-transform: none; font-weight: 200; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; padding: 0 20px;">
+                Мы с большим трепетом и заботой составляем основное гастрономическое меню для нашего праздничного стола. 
+                <br><br>
+                Формат нашего загородного праздника в лесу абсолютно свободный, открытый и непринужденный, поэтому вы можете смело и без стеснения привозить с собой любые ваши самые любимые алкогольные напитки, которые предпочтете пить в этот вечер!
+            </p>
         </section>
 
-        <!-- Секция 10: Анкета-опрос -->
-        <section style="background-color: var(--cream-silk); padding: 80px 30px;">
-            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">RSVP</div>
-            <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #8d8175; margin-bottom: 45px; font-family: 'Montserrat', sans-serif;">Анкета гостя</h2>
+        <!-- СЕКЦИЯ 7: Высокая Анкета Гостя (RSVP) -->
+        <section class="animate-fade" style="background-color: var(--lux-cream); padding-top: 80px; padding-bottom: 90px;">
+            <div style="font-family: 'Pinyon Script', cursive; font-size: 5.5rem; color: var(--lux-burgundy); line-height: 0.6;">Rsvp</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; color: #8a7f72; margin-top: 15px; margin-bottom: 50px;">Подтверждение присутствия</div>
             
-            <form id="weddingForm" style="text-align: left; background: #ffffff; padding: 40px 30px; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border: 1px solid rgba(61, 8, 17, 0.03);">
-                <div style="margin-bottom: 25px;">
-                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 1.5px; color: #8a7f73; margin-bottom: 10px; text-transform: uppercase;">Ваше Имя и Фамилия</label>
-                    <input type="text" id="guestName" placeholder="Александр Иванов" required class="form-input" style="margin: 0; outline: none; border-radius: 0; border: none; border-bottom: 1px solid rgba(61, 8, 17, 0.15); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif;">
-                </div>
+            <form id="weddingForm" style="text-align: left; background: #ffffff; padding: 50px 35px; box-shadow: 0 30px 70px rgba(23, 1, 4, 0.05); border: 1px solid rgba(197, 168, 128, 0.2);">
                 <div style="margin-bottom: 35px;">
-                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 1.5px; color: #8a7f73; margin-bottom: 10px; text-transform: uppercase;">Пожелания по еде / аллергии</label>
-                    <input type="text" id="guestRest" placeholder="Например: не ем рыбу" class="form-input" style="margin: 0; outline: none; border-radius: 0; border: none; border-bottom: 1px solid rgba(61, 8, 17, 0.15); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif;">
+                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.7rem; letter-spacing: 2px; color: #8a7f73; margin-bottom: 5px; text-transform: uppercase;">Ваше Имя и Фамилия</label>
+                    <input type="text" id="guestName" placeholder="Александр Иванов" required style="width: 100%; outline: none; border: none; border-bottom: 1px solid rgba(23, 1, 4, 0.15); background: transparent; padding: 12px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--text-dark); transition: border-color 0.4s;">
                 </div>
-                <button type="submit" style="width: 100%; padding: 18px; background-color: var(--bg-lux-ultra); color: var(--text-light); border: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-family: 'Montserrat', sans-serif; font-weight: 400; cursor: pointer; border-radius: 2px; box-shadow: 0 8px 25px rgba(18, 1, 3, 0.3); transition: all 0.3s;">Подтвердить присутствие</button>
+                
+                <div style="margin-bottom: 45px;">
+                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.7rem; letter-spacing: 2px; color: #8a7f73; margin-bottom: 5px; text-transform: uppercase;">Ограничения в еде / Аллергии</label>
+                    <input type="text" id="guestRest" placeholder="Например: не ем рыбу / нет ограничений" style="width: 100%; outline: none; border: none; border-bottom: 1px solid rgba(23, 1, 4, 0.15); background: transparent; padding: 12px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--text-dark); transition: border-color 0.4s;">
+                </div>
+                
+                <button type="submit" style="width: 100%; padding: 20px; background-color: var(--lux-burgundy); color: var(--text-light); border: 1px solid var(--lux-gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-family: 'Montserrat', sans-serif; font-weight: 200; cursor: pointer; box-shadow: 0 12px 35px rgba(23, 1, 4, 0.3); transition: all 0.4s ease;">
+                    Отправить анкету
+                </button>
             </form>
             
-            <div id="successMessage" style="display: none; background: #ffffff; padding: 50px 30px; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border: 1px solid rgba(197, 168, 128, 0.3); text-align: center;">
-                <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3rem; margin-bottom: 10px;">Thank you</div>
-                <p style="color: #666; font-size: 1.1rem; font-style: italic; padding: 0;">Ваш ответ успешно сохранен в нашей системе.</p>
+            <div id="successMessage" style="display: none; background: #ffffff; padding: 60px 30px; border: 1px solid var(--lux-gold); text-align: center; box-shadow: 0 30px 70px rgba(23, 1, 4, 0.05);">
+                <div style="font-family: 'Pinyon Script', cursive; font-size: 4rem; color: var(--lux-burgundy); margin-bottom: 15px; line-height: 0.8;">Thank you</div>
+                <div style="width: 30px; height: 1px; background: var(--lux-gold); margin: 15px auto;"></div>
+                <p style="color: #6d6359; font-size: 0.85rem; font-family: 'Montserrat', sans-serif; font-weight: 100; letter-spacing: 2px; text-transform: uppercase; padding: 0;">Ваша анкета успешно сохранена в закрытой системе.</p>
             </div>
         </section>
-    </div> <!-- Конец .phone-container -->
+    </div>
 
     <script>
         const form = document.getElementById('weddingForm');
         const successMsg = document.getElementById('successMessage');
+
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             const nameVal = document.getElementById('guestName').value.trim();
-            const restVal = document.getElementById('guestRest').value.trim() || 'Нет пожеланий';
+            const restVal = document.getElementById('guestRest').value.trim() || 'Нет ограничений';
             const timestamp = new Date().toLocaleString('ru-RU');
             const logLine = `[${timestamp}] Гость: ${nameVal} | Пожелания: ${restVal}\n`;
             
