@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Виктория & Даниил — 02.10.2026</title>
-    <!-- Подключаем премиальные шрифты: серифный Cormorant Garamond и чистый Montserrat -->
+    <!-- Подключаем изысканные свадебные шрифты: Cormorant Garamond и каллиграфический ручной Monsieur La Doulaise -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --bg-lux-dark: #200407;   /* Роскошный, глубокий темный бордо */
-            --bg-maroon: #3d0811;     /* Насыщенный винный */
-            --cream-light: #fdfbf7;   /* Дорогой молочно-белый */
-            --cream-dark: #f5eedf;    /* Приглушенный кремовый для карточек */
-            --text-gold: #d4af37;     /* Сдержанное благородное золото */
-            --text-dark: #211c18;     /* Глубокий графит для текста */
+            --bg-lux-ultra: #120103;  /* Тёмное благородное вино */
+            --bg-maroon-deep: #1f0307; /* Роскошный бархатный бордовый */
+            --cream-silk: #fbf9f4;     /* Молочно-шёлковый светлый */
+            --text-gold-fade: #c5a880; /* Приглушённое винтажное золото */
+            --text-dark: #2a221d;      /* Мягкий графит для чтения */
             --text-light: #ffffff;
-            --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --shadow-premium: 0 35px 80px rgba(0, 0, 0, 0.85); /* Глубокая тень для ПК */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* Плавное появление элементов при загрузке */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body {
-            background-color: #110204;
+            background-color: #080001;
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
             display: flex;
@@ -31,88 +36,118 @@
             padding: 40px 0;
         }
 
-        /* Телефонный формат с элегантными тенями на ПК */
+        /* Премиальный телефонный каркас с глубокими тенями на ПК */
         .phone-container {
             width: 100%;
             max-width: 420px;
-            background-color: var(--cream-light);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+            background-color: var(--cream-silk);
+            box-shadow: var(--shadow-premium);
             display: flex;
             flex-direction: column;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
+            position: relative;
         }
 
-        section { padding: 55px 30px; text-align: center; position: relative; }
+        section { 
+            padding: 65px 0; 
+            text-align: center; 
+            position: relative;
+            animation: fadeInUp 1.2s ease forwards;
+        }
 
-        h1, h2, h3, .serif-font {
+        /* Журнальные заголовки */
+        h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
-        p { font-size: 0.95rem; font-weight: 300; line-height: 1.7; letter-spacing: 0.3px; }
-
-        .luxury-frame {
-            border: 1px solid rgba(61, 8, 17, 0.08);
-            padding: 30px 20px;
-            border-radius: 2px;
+        p { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem; 
+            font-weight: 400; 
+            line-height: 1.6; 
+            padding: 0 35px;
         }
 
-        .img-box {
+        /* Каллиграфические росчерки из примеров */
+        .calligraphy {
+            font-family: 'Monsieur La Doulaise', cursive;
+            font-size: 3.8rem;
+            color: var(--text-gold-fade);
+            line-height: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Картинки "в край" плашек без рамок по бокам */
+        .img-full-width {
             width: 100%;
-            height: 460px;
+            height: 480px;
             overflow: hidden;
-            border-radius: 2px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-soft);
+            margin: 20px 0;
         }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .img-full-width img { width: 100%; height: 100%; object-fit: cover; }
 
-        .section-intro { background-color: var(--cream-light); padding-top: 70px; }
-        .main-title { font-size: 2.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--bg-lux-dark); margin-bottom: 5px; }
-        .sub-title { font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase; color: #8a7f73; margin-bottom: 35px; }
-        .names-title { font-size: 2.4rem; font-style: italic; color: var(--bg-lux-dark); margin: 25px 0; }
-        .frame-top { border-top: 1px solid rgba(61, 8, 17, 0.15); padding-top: 25px; }
+        /* Вводная секция */
+        .section-intro { background-color: var(--cream-silk); padding-top: 80px; }
+        .intro-wedding { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; color: #8d8175; margin-bottom: 5px; }
+        .intro-day { font-size: 2.8rem; font-style: italic; color: var(--bg-lux-ultra); font-family: 'Cormorant Garamond', serif; margin-bottom: 25px; }
+        .names-luxury { font-size: 3rem; font-weight: 400; color: var(--bg-lux-ultra); margin: 25px 0; letter-spacing: 1px; }
 
-        .section-date { background-color: var(--bg-lux-dark); color: var(--text-light); box-shadow: var(--shadow-soft); }
-        .section-date h2 { font-size: 2.5rem; font-style: italic; color: var(--text-gold); margin-top: 15px; }
-        
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; max-width: 290px; margin: 30px auto 0; font-size: 0.85rem; }
-        .calendar-grid span { display: flex; justify-content: center; align-items: center; height: 32px; }
-        .day-header { font-weight: 400; color: rgba(255,255,255,0.3); font-size: 0.75rem; text-transform: uppercase; }
-        .wedding-day { background-color: var(--cream-light); color: var(--bg-lux-dark); font-weight: 600; border-radius: 50%; width: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        /* Календарь */
+        .section-date { background-color: var(--bg-lux-ultra); color: var(--text-light); padding: 70px 30px; }
+        .section-date h2 { font-size: 2.8rem; font-style: italic; color: var(--text-gold-fade); margin-top: 10px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; max-width: 290px; margin: 35px auto 0; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
+        .calendar-grid span { display: flex; justify-content: center; align-items: center; height: 32px; font-weight: 200; }
+        .day-header { color: rgba(255,255,255,0.3); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .wedding-day { background-color: var(--cream-silk); color: var(--bg-lux-ultra); font-weight: 500; border-radius: 50%; width: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.4); }
 
-        .btn-map { display: inline-block; background-color: var(--cream-light); color: var(--bg-lux-dark); text-decoration: none; padding: 14px 35px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border-radius: 2px; }
-        .palette-container { display: flex; justify-content: center; gap: 15px; }
-        .palette-circle { width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .form-input { width: 100%; padding: 14px; background: #faf8f5; border: 1px solid rgba(61, 8, 17, 0.1); color: var(--text-dark); font-family: inherit; font-size: 0.9rem; border-radius: 2px; margin-top: 8px; margin-bottom: 25px; }
+        /* Динамический глянец на кнопке карты */
+        .btn-luxury-map { 
+            display: inline-block; 
+            background-color: var(--cream-silk); 
+            color: var(--bg-lux-ultra); 
+            text-decoration: none; 
+            padding: 16px 40px; 
+            font-size: 0.8rem; 
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 400; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            border-radius: 2px;
+            margin-top: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-luxury-map:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
 
         @media (max-width: 450px) {
-            body { padding: 0; background-color: var(--cream-light); }
+            body { padding: 0; background-color: var(--cream-silk); }
             .phone-container { max-width: 100%; box-shadow: none; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Вот он, тот самый открывающий контейнер, который теперь на месте -->
     <div class="phone-container">
 
         <!-- Секция 1: Обложка -->
         <section class="section-intro">
-            <div class="main-title">The Wedding</div>
-            <div class="sub-title">day</div>
-            <div class="img-box"><img src="main.png" alt="Виктория и Даниил"></div>
-            <div class="names-title">Виктория & Даниил</div>
-            <div class="frame-top">
-                <p>Любовь — это выбор, который мы делаем каждый день. И в этот особенный вечер мы скажем «да» друг другу перед теми, кто дорог нам больше всего.</p>
-            </div>
+            <div class="intro-wedding">Приглашение на свадьбу</div>
+            <div class="intro-day">Save the Date</div>
+            <div class="img-full-width"><img src="main.png" alt="Виктория и Даниил"></div>
+            <div class="names-luxury">Виктория & Даниил</div>
+            <div style="width: 40px; height: 1px; background: var(--text-gold-fade); margin: 25px auto;"></div>
+            <p style="font-style: italic; color: #554d45;">«Любовь — это выбор, который мы делаем каждый день. И в этот особенный вечер мы скажем «да» друг другу перед теми, кто дорог нам больше всего».</p>
         </section>
 
         <!-- Секция 2: Календарь -->
         <section class="section-date">
-            <p>Два сердца. Один день. С любовью приглашаем разделить этот миг.</p>
+            <div class="calligraphy">Love story</div>
+            <p style="opacity: 0.8; font-style: italic; padding: 0 40px;">Два сердца. Один день. С любовью приглашаем вас разделить этот миг вместе с нами.</p>
             <h2>Октябрь 2026</h2>
             <div class="calendar-grid">
                 <span class="day-header">Пн</span><span class="day-header">Вт</span><span class="day-header">Ср</span><span class="day-header">Чт</span><span class="day-header">Пт</span><span class="day-header">Сб</span><span class="day-header">Вс</span>
@@ -124,87 +159,76 @@
             </div>
         </section>
 
-        <!-- Секция 3: Фото кольца -->
-        <section style="background-color: var(--cream-light); padding: 30px 30px 0 30px;">
-            <div class="img-box" style="height: 380px; margin-bottom: 0;"><img src="ring.png" alt="Кольцо"></div>
-        </section>
-        <!-- Секция 4: Программа свадебного дня -->
-        <section style="background-color: var(--cream-light);">
-            <h2 style="font-size: 2.6rem; color: var(--bg-lux-dark); font-style: italic; margin-bottom: 5px;">Timing</h2>
-            <p style="color: #73675c; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 35px;">Программа свадебного дня</p>
-            <div style="display: flex; flex-direction: column; gap: 25px; max-width: 280px; margin: 0 auto; text-align: left;">
-                <div style="display: flex; align-items: baseline; border-bottom: 1px solid rgba(61, 8, 17, 0.1); padding-bottom: 10px;">
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--bg-lux-dark); font-weight: 600; width: 80px;">17:00</div>
-                    <div style="font-size: 0.9rem; font-weight: 400; color: var(--text-dark);">Торжественный сбор гостей</div>
+        <!-- Секция 3: Роскошная интерьерная перебивка (вместо кольца) -->
+        <div class="img-full-width" style="height: 400px; margin: 0;"><img src="ring.png" alt="Детали"></div>
+        <!-- Секция 4: Тайминг -->
+        <section style="background-color: var(--cream-silk); padding-bottom: 40px;">
+            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">Timing</div>
+            <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #8d8175; margin-bottom: 45px; font-family: 'Montserrat', sans-serif;">Программа торжества</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 35px; max-width: 300px; margin: 0 auto; text-align: center;">
+                <div style="border-bottom: 1px solid rgba(61, 8, 17, 0.06); padding-bottom: 20px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--bg-lux-ultra); font-weight: 300; font-style: italic; line-height: 1;">17:00</div>
+                    <div style="font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-dark); margin-top: 5px; letter-spacing: 0.5px;">Сбор самых близких гостей</div>
                 </div>
-                <div style="display: flex; align-items: baseline; border-bottom: 1px solid rgba(61, 8, 17, 0.1); padding-bottom: 10px;">
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--bg-lux-dark); font-weight: 600; width: 80px;">17:30</div>
-                    <div style="font-size: 0.9rem; font-weight: 400; color: var(--text-dark);">Начало закрытого мероприятия</div>
+                <div style="padding-bottom: 10px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--bg-lux-ultra); font-weight: 300; font-style: italic; line-height: 1;">17:30</div>
+                    <div style="font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-dark); margin-top: 5px; letter-spacing: 0.5px;">Начало закрытого мероприятия</div>
                 </div>
             </div>
         </section>
 
-        <!-- Секция 5: Фото домика в Усть-Мане -->
-        <section style="background-color: var(--cream-light); padding: 0 30px;">
-            <div class="img-box" style="height: 320px; margin-bottom: 0;"><img src="house.png" alt="Локация"></div>
-        </section>
+        <!-- Секция 5: Фото домика (в край) -->
+        <div class="img-full-width" style="margin: 0;"><img src="house.png" alt="Mono Premium Homes"></div>
 
         <!-- Секция 6: Локация -->
-        <section style="background-color: var(--bg-maroon); color: var(--text-light); box-shadow: var(--shadow-soft);">
-            <h2 style="font-size: 2.6rem; color: var(--text-gold); font-style: italic; margin-bottom: 10px;">Локация</h2>
-            <h3 style="font-size: 1.4rem; font-weight: 400; margin-bottom: 5px;">Mono Premium Homes</h3>
-            <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 30px;">Дивногорский округ, посёлок Усть-Мана</p>
-            <a href="https://yandex.ru" target="_blank" class="btn-map">Смотреть на карте</a>
+        <section style="background-color: var(--bg-maroon-deep); color: var(--text-light); padding: 75px 30px;">
+            <div class="calligraphy" style="font-size: 3.5rem;">Location</div>
+            <h3 style="font-size: 1.8rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-gold-fade);">Mono Premium Homes</h3>
+            <p style="font-size: 1.1rem; opacity: 0.8; font-style: italic; margin-bottom: 35px; padding: 0;">Дивногорский округ, посёлок Усть-Мана</p>
+            <a href="https://yandex.ru" target="_blank" class="btn-luxury-map">Открыть карту</a>
         </section>
 
-        <!-- Секция 7: Фото атмосферы/купели -->
-        <section style="background-color: var(--cream-light); padding: 35px 30px 0 30px;">
-            <div class="img-box" style="height: 320px; margin-bottom: 0;"><img src="spa.png" alt="Атмосфера"></div>
-        </section>
+        <!-- Секция 7: Фото спа/чан (в край) -->
+        <div class="img-full-width" style="margin: 0;"><img src="spa.png" alt="Атмосфера лесного лофта"></div>
 
-        <!-- Секция 8: Дресс-код -->
-        <section style="background-color: var(--cream-light);">
-            <h2 style="font-size: 2.6rem; color: var(--bg-lux-dark); font-style: italic; margin-bottom: 20px;">Dress-code</h2>
-            <div class="luxury-frame">
-                <p style="color: var(--text-dark); margin-bottom: 25px;">Будем признательны, если вы поддержите благородную атмосферу нашего праздника в формате <strong>Smart Casual</strong>.</p>
-                <div class="palette-container">
-                    <div class="palette-circle" style="background-color: #4A5D4E;"></div>
-                    <div class="palette-circle" style="background-color: #8C6D53;"></div>
-                    <div class="palette-circle" style="background-color: #D4C5B9;"></div>
-                    <div class="palette-circle" style="background-color: #2F3E46;"></div>
-                </div>
+        <!-- Секция 8: Дресс-код (Очищенный и изящный) -->
+        <section style="background-color: var(--cream-silk); padding: 70px 40px;">
+            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">Dress-code</div>
+            <div style="border-top: 1px solid rgba(197, 168, 128, 0.3); border-bottom: 1px solid rgba(197, 168, 128, 0.3); padding: 35px 10px; margin-top: 15px;">
+                <p style="color: var(--text-dark); font-style: italic; font-size: 1.3rem; line-height: 1.7; padding: 0;">«Для нас очень важен ваш комфорт. Мы будем искренне признательны, если вы поддержите лёгкую и непринужденную атмосферу нашего праздника, выбрав наряд в изысканном стиле <strong style="font-weight: 500; color: var(--bg-lux-ultra);">Smart Casual</strong>».</p>
             </div>
         </section>
 
-        <!-- Секция 9: Спиртное -->
-        <section style="background-color: var(--bg-lux-dark); color: var(--text-light); box-shadow: var(--shadow-soft);">
-            <h2 style="font-size: 2.4rem; color: var(--text-gold); font-style: italic; margin-bottom: 20px;">Пожелания</h2>
-            <div style="border: 1px solid rgba(212, 175, 55, 0.2); padding: 30px 20px; border-radius: 2px;">
-                <p style="opacity: 0.9;">Формат нашего вечера в лесу абсолютно свободный. Вы можете смело привозить с собой любые ваши любимые алкогольные напитки, которые предпочтете пить!</p>
-            </div>
+        <!-- Секция 9: Пожелания (Алкоголь) -->
+        <section style="background-color: var(--bg-lux-ultra); color: var(--text-light); padding: 75px 40px;">
+            <h2 style="font-size: 2.2rem; color: var(--text-gold-fade); font-style: italic; margin-bottom: 25px;">Детали вечера</h2>
+            <p style="opacity: 0.85; font-size: 1.2rem; font-style: italic; line-height: 1.7; padding: 0;">Мы с большим трепетом составляем основное меню праздничного стола. Формат нашего лесного праздника абсолютно свободный — вы можете смело привозить с собой любые любимые алкогольные напитки, которые предпочтете пить в этот вечер.</p>
         </section>
 
         <!-- Секция 10: Анкета-опрос -->
-        <section style="background-color: var(--cream-light); padding-bottom: 70px;">
-            <h2 style="font-size: 2.6rem; color: var(--bg-lux-dark); font-style: italic; margin-bottom: 5px;">Гостям</h2>
-            <p style="color: #73675c; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 35px;">Пожалуйста, подтвердите присутствие</p>
-            <form id="weddingForm" style="text-align: left; background: #ffffff; padding: 35px 25px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 0.75rem; color: #8a7f73; text-transform: uppercase;">Ваше Имя и Фамилия</label>
-                    <input type="text" id="guestName" placeholder="Александр Иванов" required class="form-input">
+        <section style="background-color: var(--cream-silk); padding: 80px 30px;">
+            <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3.5rem;">RSVP</div>
+            <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #8d8175; margin-bottom: 45px; font-family: 'Montserrat', sans-serif;">Анкета гостя</h2>
+            
+            <form id="weddingForm" style="text-align: left; background: #ffffff; padding: 40px 30px; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border: 1px solid rgba(61, 8, 17, 0.03);">
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 1.5px; color: #8a7f73; margin-bottom: 10px; text-transform: uppercase;">Ваше Имя и Фамилия</label>
+                    <input type="text" id="guestName" placeholder="Александр Иванов" required class="form-input" style="margin: 0; outline: none; border-radius: 0; border: none; border-bottom: 1px solid rgba(61, 8, 17, 0.15); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif;">
                 </div>
-                <div style="margin-bottom: 20px;">
-                    <label style="font-size: 0.75rem; color: #8a7f73; text-transform: uppercase;">Аллергии / пожелания по еде</label>
-                    <input type="text" id="guestRest" placeholder="Например: не ем рыбу" class="form-input">
+                <div style="margin-bottom: 35px;">
+                    <label style="display: block; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 1.5px; color: #8a7f73; margin-bottom: 10px; text-transform: uppercase;">Пожелания по еде / аллергии</label>
+                    <input type="text" id="guestRest" placeholder="Например: не ем рыбу" class="form-input" style="margin: 0; outline: none; border-radius: 0; border: none; border-bottom: 1px solid rgba(61, 8, 17, 0.15); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif;">
                 </div>
-                <button type="submit" style="width: 100%; padding: 16px; background-color: var(--bg-lux-dark); color: var(--text-light); border: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border-radius: 2px; box-shadow: 0 6px 20px rgba(74, 13, 22, 0.25);">Подтвердить присутствие</button>
+                <button type="submit" style="width: 100%; padding: 18px; background-color: var(--bg-lux-ultra); color: var(--text-light); border: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-family: 'Montserrat', sans-serif; font-weight: 400; cursor: pointer; border-radius: 2px; box-shadow: 0 8px 25px rgba(18, 1, 3, 0.3); transition: all 0.3s;">Подтвердить присутствие</button>
             </form>
-            <div id="successMessage" style="display: none; background: #ffffff; padding: 40px 25px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(61, 8, 17, 0.1); margin-top: 20px;">
-                <h3 style="font-size: 1.8rem; color: var(--bg-lux-dark); margin-bottom: 10px; font-style: italic;">Благодарим Вас!</h3>
-                <p style="color: #666; font-size: 0.9rem;">Ваша анкета успешно принята.</p>
+            
+            <div id="successMessage" style="display: none; background: #ffffff; padding: 50px 30px; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border: 1px solid rgba(197, 168, 128, 0.3); text-align: center;">
+                <div class="calligraphy" style="color: var(--bg-lux-ultra); font-size: 3rem; margin-bottom: 10px;">Thank you</div>
+                <p style="color: #666; font-size: 1.1rem; font-style: italic; padding: 0;">Ваш ответ успешно сохранен в нашей системе.</p>
             </div>
         </section>
-    </div> <!-- Закрываем .phone-container -->
+    </div> <!-- Конец .phone-container -->
 
     <script>
         const form = document.getElementById('weddingForm');
