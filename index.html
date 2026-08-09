@@ -301,19 +301,18 @@
                     </div>
                 </div>
             </div>
-            <!-- ЛИСТ 7: Анкета RSVP и Эффект наложения Кальки -->
+                       <!-- ЛИСТ 7: Анкета RSVP и Эффект наложения Кальки -->
             <div class="paper-sheet" style="position: relative;">
                 <div class="embossed-title">Rsvp</div>
                 <div class="text-aprel" style="color: #7a7065; font-size: 0.65rem; margin-bottom: 45px;">Подтверждение вашего присутствия</div>
                 
-                <!-- Прозрачная минималистичная форма (Только Имя и Фамилия) -->
-                <form id="weddingForm" style="text-align: left; width: 100%; max-width: 290px; margin: 0 auto;">
+                <!-- Прозрачная форма, подключенная к бесплатному шлюзу уведомлений -->
+                <form id="weddingForm" action="https://formspree.io" method="POST" style="text-align: left; width: 100%; max-width: 290px; margin: 0 auto;">
                     <div style="margin-bottom: 40px;">
                         <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.65rem; letter-spacing: 2px; color: #8a7f73; margin-bottom: 5px; text-transform: uppercase;">Имя и Фамилия гостя</label>
-                        <input type="text" id="guestName" placeholder="Александр Иванов" required style="width: 100%; outline: none; border: none; border-bottom: 1px solid rgba(23, 1, 4, 0.2); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--text-main);">
+                        <input type="text" name="name" id="guestName" placeholder="Александр Иванов" required style="width: 100%; outline: none; border: none; border-bottom: 1px solid rgba(23, 1, 4, 0.2); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--text-main);">
                     </div>
                     
-                    <!-- Прозрачная кутюрная кнопка толщиной в 1 пиксель -->
                     <button type="submit" class="btn-rsvp-glow" style="width: 100%; padding: 16px; background: transparent; color: var(--dark-burgundy); border: 1px solid var(--dark-burgundy); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-family: 'Montserrat', sans-serif; font-weight: 200; cursor: pointer; transition: all 0.4s ease; position: relative;">
                         Отправить ответ
                     </button>
@@ -321,12 +320,9 @@
 
                 <!-- Эффект наложения полупрозрачного листа бумаги (кальки) при клике -->
                 <div id="tracingPaperOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(2px); z-index: 100; flex-direction: column; justify-content: center; align-items: center; padding: 30px; animation: paperDrop 0.6s ease forwards;">
-                    
                     <div style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-style: italic; color: var(--dark-burgundy); margin-bottom: 15px; line-height: 0.8; opacity: 0.85;">Thank you</div>
                     <div style="width: 20px; height: 1px; background: var(--dark-burgundy); margin: 15px auto;"></div>
                     <div class="text-aprel" style="color: #6d6359; font-size: 0.7rem; text-align: center; margin-bottom: 50px; padding: 0 10px;">Ваша анкета успешно зафиксирована в закрытой системе.</div>
-                    
-                    <!-- Тонкая кнопка принудительного закрытия как в интерфейсах игр -->
                     <button id="closeOverlayBtn" style="background: transparent; border: 1px solid rgba(23, 1, 4, 0.2); color: #7a7065; padding: 10px 25px; font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s;">
                         Закрыть окно
                     </button>
@@ -337,14 +333,8 @@
     </div> <!-- Конец .phone-deck -->
 
     <style>
-        .btn-rsvp-glow:hover {
-            box-shadow: 0 0 15px rgba(31, 3, 6, 0.15);
-            background-color: rgba(31, 3, 6, 0.02);
-        }
-        .btn-rsvp-glow:active {
-            box-shadow: 0 0 25px rgba(31, 3, 6, 0.35);
-            border-color: var(--dark-burgundy);
-        }
+        .btn-rsvp-glow:hover { box-shadow: 0 0 15px rgba(31, 3, 6, 0.15); background-color: rgba(31, 3, 6, 0.02); }
+        .btn-rsvp-glow:active { box-shadow: 0 0 25px rgba(31, 3, 6, 0.35); border-color: var(--dark-burgundy); }
         @keyframes paperDrop {
             from { opacity: 0; background: rgba(255, 255, 255, 0); backdrop-filter: blur(0px); }
             to { opacity: 1; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(2px); }
@@ -359,20 +349,21 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             const nameVal = document.getElementById('guestName').value.trim();
-            const restVal = 'Ограничений нет (Анкета очищена)';
-            const timestamp = new Date().toLocaleString('ru-RU');
             
-            const logLine = `[${timestamp}] Гость: ${nameVal} | Пожелания: ${restVal}\n`;
-            let currentLogs = localStorage.getItem('wedding_rsvp_logs') || '';
-            localStorage.setItem('wedding_rsvp_logs', currentLogs + logLine);
-            
-            const blob = new Blob([logLine], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `RSVP_${nameVal.replace(/\s+/g, '_')}.txt`;
-            link.click();
-            
-            overlay.style.display = 'flex';
+            // Отправляем данные на шлюз уведомлений
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    overlay.style.display = 'flex';
+                } else {
+                    alert('Ошибка отправки. Пожалуйста, попробуйте еще раз.');
+                }
+            }).catch(error => {
+                alert('Сбой сети. Проверьте подключение.');
+            });
         });
 
         closeBtn.addEventListener('click', function() {
@@ -382,3 +373,4 @@
     </script>
 </body>
 </html>
+
