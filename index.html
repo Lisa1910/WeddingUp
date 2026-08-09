@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Виктория & Даниил — 02.10.2026</title>
-    <!-- Подключаем изящные шрифты: Felidae / Kudry (через тонкийPlayfair и декоративный серфинг) и Montserrat для ультратонких линий -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --dark-burgundy: #130103;  /* Твой ультратемный глубокий бордовый */
-            --plate-burgundy: #1f0306; /* Чуть контрастный бордовый для форм окон */
-            --paper-cotton: #f9f7f2;   /* Хлопковый белый лист из скетчбука */
-            --text-main: #1c1516;      /* Графит для тонкого текста */
+            --dark-burgundy: #130103;  
+            --plate-burgundy: #1f0306; 
+            --paper-cotton: #f9f7f2;   
+            --text-main: #1c1516;      
             --line-burgundy: rgba(31, 3, 6, 0.2);
-            --shadow-in: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+            --shadow-in: inset 2px 2px 6px rgba(0, 0, 0, 0.4);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Текстура хлопковой бумаги из скетчбука через микрозернистость */
+        /* Микрозернистый шум холста */
         body::before {
             content: "";
             position: fixed;
@@ -40,7 +39,6 @@
             overflow: hidden;
         }
 
-        /* Ограничитель под телефон с мощной мягкой тенью на ПК */
         .phone-deck {
             width: 100%;
             max-width: 420px;
@@ -53,7 +51,6 @@
             overflow: hidden;
         }
 
-        /* Эффект smooth swapping: постраничное жесткое перелистывание листов бумаги */
         .swiper-wrapper {
             width: 100%;
             height: 100%;
@@ -78,7 +75,6 @@
             overflow: hidden;
         }
 
-        /* Тонкий звенящий шрифт «Апрель» */
         .text-aprel {
             font-family: 'Montserrat', sans-serif;
             font-weight: 100;
@@ -90,19 +86,40 @@
             padding: 0 20px;
         }
 
-        /* Изысканная фигурная плашка как на фото 1 (Готическое окно-витраж) */
+        /* Строгая гранёная плашка со срезанными углами без закруглений */
         .gothic-window-plate {
             width: calc(100% - 40px);
             background-color: var(--dark-burgundy);
             color: #ffffff;
             padding: 45px 25px;
             position: relative;
-            clip-path: url(#gothicmask); /* Магическая фигурная обрезка по вектору */
+            clip-path: url(#gothicmask);
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: var(--shadow-in);
         }
 
-        /* Вальяжный наплыв текста на фото */
+        /* Обновленный блок скролла картинок домика вбок */
+        .horizontal-gallery {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 10px 20px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .gallery-item {
+            flex: 0 0 85%; /* Каждая фотка занимает 85% ширины, оставляя край следующей видимым */
+            scroll-snap-align: center;
+            height: 380px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
         .casual-overlap {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4.8rem;
@@ -116,13 +133,8 @@
             mix-blend-mode: multiply;
         }
 
-        .img-container-lux {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
+        .img-container-lux { width: 100%; height: 100%; position: relative; }
         .img-container-lux img { width: 100%; height: 100%; object-fit: cover; }
-        /* Стили для полупрозрачной готической графики на фоне */
         .gothic-bg-pattern {
             position: absolute;
             width: 150%;
@@ -133,7 +145,6 @@
             transform: rotate(15deg);
         }
 
-        /* Тонкая шкала тайминга */
         .timeline-axis {
             position: relative;
             width: 1px;
@@ -151,7 +162,6 @@
             border-radius: 50%;
         }
 
-        /* Тонкое вогнутое слепое тиснение для заголовков */
         .embossed-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
@@ -168,20 +178,22 @@
             font-size: 2.2rem;
             font-style: italic;
             font-weight: 300;
-            color: var(--dark-burgundy);
+            color: var(--paper-cotton);
             letter-spacing: 1px;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.5), -1px -1px 1px rgba(255,255,255,0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
             margin-bottom: 25px;
+            z-index: 2;
+            position: relative;
         }
     </style>
 </head>
 <body>
 
-    <!-- Векторная разметка для сложной фигурной формы плашек со скриншота 1 -->
+    <!-- Обновленная маска: строгая гранёная геометрическая форма без закруглений -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
             <clipPath id="gothicmask" clipPathUnits="objectBoundingBox">
-                <path d="M 0.5,0 C 0.65,0.03 0.8,0.02 0.88,0.05 C 0.95,0.08 0.97,0.13 0.97,0.18 C 0.97,0.22 0.94,0.26 0.98,0.32 C 1,0.38 1,0.62 0.98,0.68 C 0.94,0.74 0.97,0.78 0.97,0.82 C 0.97,0.87 0.95,0.92 0.88,0.95 C 0.8,0.98 0.65,0.97 0.5,1 C 0.35,0.97 0.2,0.98 0.12,0.95 C 0.05,0.92 0.03,0.87 0.03,0.82 C 0.03,0.78 0.06,0.74 0.02,0.68 C 0,0.62 0,0.38 0.02,0.32 C 0.06,0.26 0.03,0.22 0.03,0.18 C 0.03,0.13 0.05,0.08 0.12,0.05 C 0.2,0.02 0.35,0.03 0.5,0 Z"/>
+                <path d="M 0.5,0 L 0.9,0.06 L 1,0.15 L 1,0.85 L 0.9,0.94 L 0.5,1 L 0.1,0.94 L 0,0.85 L 0,0.15 L 0.1,0.06 Z"/>
             </clipPath>
         </defs>
     </svg>
@@ -189,17 +201,15 @@
     <div class="phone-deck">
         <div class="swiper-wrapper">
 
-            <!-- ЛИСТ 1: Обложка (Скетчбук) -->
+            <!-- ЛИСТ 1: Обложка -->
             <div class="paper-sheet">
-                <!-- Полупрозрачная готика на фоне листа -->
-                <svg class="gothic-bg-pattern" viewBox="0 0 100 100" fill="none" stroke="#130103" stroke-width="0.3"><path d="M50 0 C75 25 100 50 50 100 C0 50 25 25 50 0 Z M50 20 C65 35 80 50 50 80 C20 50 35 35 50 20 Z"/></svg>
+                <svg class="gothic-bg-pattern" viewBox="0 0 100 100" fill="none" stroke="#130103" stroke-width="0.3"><path d="M50 0 L100 50 L50 100 L0 50 Z M50 15 L85 50 L50 85 L15 50 Z"/></svg>
                 
                 <div style="font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 6px; color: #73675c; margin-bottom: 30px;">THE WEDDING DAY</div>
                 
-                <!-- Блок с фото и заплывающей вальяжной каллиграфией Caravan/Ministry -->
                 <div style="width: 100%; height: 420px; position: relative; margin-bottom: 35px;">
-                    <div class="casual-overlap" style="top: -20px; left: 15px;">Victoria</div>
-                    <div class="casual-overlap" style="bottom: -15px; right: 25px; font-size: 4.4rem;">& Daniil</div>
+                    <div class="casual-overlap" style="top: -20px; left: 15px; font-family: 'Pinyon Script', cursive; font-size: 5.5rem;">Victoria</div>
+                    <div class="casual-overlap" style="bottom: -15px; right: 25px; font-family: 'Pinyon Script', cursive; font-size: 5rem;">& Daniil</div>
                     <div class="img-container-lux" style="clip-path: url(#gothicmask); width: calc(100% - 20px); margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
                         <img src="main.png" alt="Виктория и Даниил">
                     </div>
@@ -210,15 +220,15 @@
                 </div>
             </div>
 
-            <!-- ЛИСТ 2: Фигурная плашка с календарем (Бордовый вельвет) -->
-            <div class="paper-sheet" style="background-color: var(--dark-burgundy);">
-                <div class="gothic-window-plate">
-                    <div class="embossed-title-light" style="color: var(--paper-cotton); text-align: center;">Октябрь</div>
+            <!-- ЛИСТ 2: Календарь с растровым бордовым фоном и гранёной плашкой -->
+            <div class="paper-sheet" style="background: linear-gradient(rgba(19, 1, 3, 0.65), rgba(19, 1, 3, 0.85)), url('date-bg.png') no-repeat center center/cover;">
+                <div class="gothic-window-plate" style="background-color: rgba(31, 3, 6, 0.4); backdrop-filter: blur(4px);">
+                    <div class="embossed-title-light">Октябрь</div>
                     
-                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; max-width: 280px; margin: 30px auto 0; font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.75rem; text-align: center;">
-                        <span style="color: rgba(255,255,255,0.3);">Пн</span><span style="color: rgba(255,255,255,0.3);">Вт</span><span style="color: rgba(255,255,255,0.3);">Ср</span><span style="color: rgba(255,255,255,0.3);">Чт</span><span style="color: rgba(255,255,255,0.3);">Пт</span><span style="color: rgba(255,255,255,0.3);">Сб</span><span style="color: rgba(255,255,255,0.3);">Вс</span>
+                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; max-width: 280px; margin: 30px auto 0; font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.75rem; text-align: center; position: relative; z-index: 2;">
+                        <span style="color: rgba(255,255,255,0.35);">Пн</span><span style="color: rgba(255,255,255,0.35);">Вт</span><span style="color: rgba(255,255,255,0.35);">Ср</span><span style="color: rgba(255,255,255,0.35);">Чт</span><span style="color: rgba(255,255,255,0.35);">Пт</span><span style="color: rgba(255,255,255,0.35);">Сб</span><span style="color: rgba(255,255,255,0.35);">Вс</span>
                         <span></span><span></span><span></span><span>1</span>
-                        <span style="position: relative; font-weight: 400; color: var(--dark-burgundy); z-index: 1;"><span style="position: absolute; width: 26px; height: 26px; background: var(--paper-cotton); border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1;"></span>2</span>
+                        <span style="position: relative; font-weight: 400; color: var(--dark-burgundy); z-index: 1;"><span style="position: absolute; width: 26px; height: 26px; background: var(--paper-cotton); border-radius: 0; transform: translate(-50%, -50%) rotate(45deg); left: 50%; top: 50%; z-index: -1; box-shadow: 0 4px 10px rgba(0,0,0,0.3);"></span>2</span>
                         <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
                         <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
                         <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
@@ -243,31 +253,33 @@
                 </div>
             </div>
 
-            <!-- ЛИСТ 4: Живописная Локация (Mono Premium Homes) -->
-            <div class="paper-sheet" style="background-color: var(--dark-burgundy); padding: 30px 20px;">
-                <div style="width: 100%; height: 350px; position: relative; margin-bottom: 30px;">
-                    <div class="img-container-lux" style="clip-path: url(#gothicmask);">
-                        <img src="house.png" alt="Mono Premium Homes">
-                    </div>
+            <!-- ЛИСТ 4: Живописная Локация и Горизонтальный Слайдер домиков -->
+            <div class="paper-sheet" style="background-color: var(--dark-burgundy); padding: 30px 0;">
+                
+                <!-- Горизонтальная интерактивная галерея (видно край следующей фотографии) -->
+                <div class="horizontal-gallery">
+                    <div class="gallery-item" style="clip-path: url(#gothicmask);"><img src="house1.png" alt="Mono Premium Homes 1"></div>
+                    <div class="gallery-item" style="clip-path: url(#gothicmask);"><img src="house2.png" alt="Mono Premium Homes 2"></div>
+                    <div class="gallery-item" style="clip-path: url(#gothicmask);"><img src="house3.png" alt="Mono Premium Homes 3"></div>
                 </div>
                 
-                <div class="embossed-title" style="color: var(--paper-cotton); text-shadow: none; margin-bottom: 5px; font-size: 1.8rem; font-style: normal;">Mono Premium Homes</div>
-                <div class="text-aprel" style="color: rgba(255,255,255,0.5); font-size: 0.7rem; margin-bottom: 25px;">Дивногорский округ, посёлок Усть-Мана</div>
-                
-                <!-- Точная ссылка на 2ГИС со скриншота координат -->
-                <a href="https://2gis.ru" target="_blank" style="display: inline-block; background: transparent; color: var(--paper-cotton); border: 1px solid rgba(255,255,255,0.2); text-decoration: none; padding: 14px 35px; font-size: 0.7rem; font-family: 'Montserrat', sans-serif; font-weight: 100; text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s;">
-                    Маршрут в 2ГИС
-                </a>
+                <div style="text-align: center; margin-top: 25px; padding: 0 20px;">
+                    <div class="embossed-title" style="color: var(--paper-cotton); text-shadow: none; margin-bottom: 5px; font-size: 1.8rem; font-style: normal;">Mono Premium Homes</div>
+                    <div class="text-aprel" style="color: rgba(255,255,255,0.5); font-size: 0.7rem; margin-bottom: 25px;">Дивногорский округ, посёлок Усть-Мана</div>
+                    
+                    <!-- Измененная кнопка перехода с кутюрной ссылкой 2ГИС -->
+                    <a href="https://2gis.ru" target="_blank" style="display: inline-block; background: transparent; color: var(--paper-cotton); border: 1px solid rgba(255,255,255,0.2); text-decoration: none; padding: 14px 35px; font-size: 0.7rem; font-family: 'Montserrat', sans-serif; font-weight: 100; text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s;">
+                        Как добраться
+                    </a>
+                </div>
             </div>
 
-            <!-- ЛИСТ 5: Кутюрный Дресс-код (Линейный силуэт) -->
+            <!-- ЛИСТ 5: Кутюрный Дресс-код (Силуэт на хлопке) -->
             <div class="paper-sheet">
                 <div class="embossed-title">Dress-code</div>
                 
-                <!-- Векторный линейный силуэт одежды бордовым цветом на белом хлопке -->
                 <div style="width: 100px; height: 130px; margin-bottom: 25px; opacity: 0.85;">
                     <svg viewBox="0 0 100 130" fill="none" stroke="#130103" stroke-width="0.8">
-                        <!-- Силуэт костюма/платья тонкими нитями -->
                         <path d="M20 20 L35 40 L50 20 L65 40 L80 20 L75 50 L65 120 L35 120 L25 50 Z" />
                         <path d="M38 43 L50 65 L62 43" />
                         <line x1="50" y1="65" x2="50" y2="120" stroke-dasharray="2 2" />
@@ -280,10 +292,10 @@
                 </div>
             </div>
 
-            <!-- ЛИСТ 6: Свободный алкоголь (Неофициальный блок) -->
+            <!-- ЛИСТ 6: Детали (Алкогольный манифест) -->
             <div class="paper-sheet" style="background-color: var(--dark-burgundy);">
                 <div class="gothic-window-plate" style="background: transparent; border: none; box-shadow: none; text-align: center;">
-                    <div class="embossed-title-light" style="color: var(--paper-cotton); margin-bottom: 25px;">Детали</div>
+                    <div class="embossed-title-light" style="margin-bottom: 25px;">Детали</div>
                     <div class="text-aprel" style="color: rgba(255,255,255,0.8); font-size: 0.75rem; text-transform: none; line-height: 2.2; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 1px; padding: 0;">
                         Мы с большим трепетом готовим меню праздничного стола. Формат вечера в лесу абсолютно открытый и непринужденный, поэтому вы можете свободно привозить с собой любые ваши любимые алкогольные напитки, которые планируете пить в этот прекрасный вечер!
                     </div>
@@ -294,28 +306,27 @@
                 <div class="embossed-title">Rsvp</div>
                 <div class="text-aprel" style="color: #7a7065; font-size: 0.65rem; margin-bottom: 45px;">Подтверждение вашего присутствия</div>
                 
-                <!-- Прозрачная минималистичная форма -->
+                <!-- Прозрачная минималистичная форма (Только Имя и Фамилия) -->
                 <form id="weddingForm" style="text-align: left; width: 100%; max-width: 290px; margin: 0 auto;">
                     <div style="margin-bottom: 40px;">
                         <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 0.65rem; letter-spacing: 2px; color: #8a7f73; margin-bottom: 5px; text-transform: uppercase;">Имя и Фамилия гостя</label>
                         <input type="text" id="guestName" placeholder="Александр Иванов" required style="width: 100%; outline: none; border: none; border-bottom: 1px solid rgba(23, 1, 4, 0.2); background: transparent; padding: 10px 0; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--text-main);">
                     </div>
                     
-                    <!-- Прозрачная кнопка толщиной в 1 пиксель с интерактивным свечением -->
+                    <!-- Прозрачная кутюрная кнопка толщиной в 1 пиксель -->
                     <button type="submit" class="btn-rsvp-glow" style="width: 100%; padding: 16px; background: transparent; color: var(--dark-burgundy); border: 1px solid var(--dark-burgundy); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-family: 'Montserrat', sans-serif; font-weight: 200; cursor: pointer; transition: all 0.4s ease; position: relative;">
                         Отправить ответ
                     </button>
                 </form>
 
-                <!-- ВАШ КУТЮРНЫЙ ЭФФЕКТ: Наложение полупрозрачного листа бумаги (кальки) при клике -->
+                <!-- Эффект наложения полупрозрачного листа бумаги (кальки) при клике -->
                 <div id="tracingPaperOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(2px); z-index: 100; flex-direction: column; justify-content: center; align-items: center; padding: 30px; animation: paperDrop 0.6s ease forwards;">
                     
-                    <!-- Визуальный эффект зависшей игры с белой пеленой -->
                     <div style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-style: italic; color: var(--dark-burgundy); margin-bottom: 15px; line-height: 0.8; opacity: 0.85;">Thank you</div>
                     <div style="width: 20px; height: 1px; background: var(--dark-burgundy); margin: 15px auto;"></div>
                     <div class="text-aprel" style="color: #6d6359; font-size: 0.7rem; text-align: center; margin-bottom: 50px; padding: 0 10px;">Ваша анкета успешно зафиксирована в закрытой системе.</div>
                     
-                    <!-- Тонкая кнопка принудительного закрытия как в интерфейсах -->
+                    <!-- Тонкая кнопка принудительного закрытия как в интерфейсах игр -->
                     <button id="closeOverlayBtn" style="background: transparent; border: 1px solid rgba(23, 1, 4, 0.2); color: #7a7065; padding: 10px 25px; font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s;">
                         Закрыть окно
                     </button>
@@ -325,14 +336,13 @@
         </div> <!-- Конец .swiper-wrapper -->
     </div> <!-- Конец .phone-deck -->
 
-    <!-- Стили для анимации падения листа кальки и неонового микро-свечения кнопки -->
     <style>
         .btn-rsvp-glow:hover {
-            box-shadow: 0 0 15px rgba(31, 3, 6, 0.2);
+            box-shadow: 0 0 15px rgba(31, 3, 6, 0.15);
             background-color: rgba(31, 3, 6, 0.02);
         }
         .btn-rsvp-glow:active {
-            box-shadow: 0 0 25px rgba(31, 3, 6, 0.4);
+            box-shadow: 0 0 25px rgba(31, 3, 6, 0.35);
             border-color: var(--dark-burgundy);
         }
         @keyframes paperDrop {
@@ -341,7 +351,6 @@
         }
     </style>
 
-    <!-- Исполнительная логика кутюрного интерфейса -->
     <script>
         const form = document.getElementById('weddingForm');
         const overlay = document.getElementById('tracingPaperOverlay');
@@ -353,23 +362,19 @@
             const restVal = 'Ограничений нет (Анкета очищена)';
             const timestamp = new Date().toLocaleString('ru-RU');
             
-            // Запись в скрытый лог устройства
             const logLine = `[${timestamp}] Гость: ${nameVal} | Пожелания: ${restVal}\n`;
             let currentLogs = localStorage.getItem('wedding_rsvp_logs') || '';
             localStorage.setItem('wedding_rsvp_logs', currentLogs + logLine);
             
-            // Скачивание чек-билета
             const blob = new Blob([logLine], { type: 'text/plain;charset=utf-8' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = `RSVP_${nameVal.replace(/\s+/g, '_')}.txt`;
             link.click();
             
-            // Эффект наплыва полупрозрачного листа кальки
             overlay.style.display = 'flex';
         });
 
-        // Кнопка принудительного закрытия оверлея
         closeBtn.addEventListener('click', function() {
             overlay.style.display = 'none';
             document.getElementById('guestName').value = '';
